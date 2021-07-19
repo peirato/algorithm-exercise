@@ -23,6 +23,15 @@ func getLessIndex(intList []int) int {
 		return l - 1
 	}
 
+	start := 0
+	mid := 0 + (len(intList)-1)/2
+
+	for start != mid {
+		if intList[mid] > intList[mid+1] {
+
+		}
+	}
+
 	// TODO
 
 	return -1
