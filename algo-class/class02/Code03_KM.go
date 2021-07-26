@@ -1,10 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"crypto/rand"
+	"fmt"
+	"math/big"
+)
 
 // 一个数组，一种数出现了k次，其他都出现了m次，m>1，m>k,找到k
 
-func onlyKTimes(arr []int, k int, m int) int{
+func onlyKTimes(arr []int, k int, m int) int {
 
 	var t [32]int
 
@@ -38,34 +42,33 @@ func onlyKTimes(arr []int, k int, m int) int{
 	return x
 }
 
-func comparators() int{
+func comparators() int {
 	return 0
 }
 
-maxNum := 100
-maxTime := 100
-func genArray() []int{
-	k,m = genKM()
-}
+const maxNum = 100
+const maxTimes = 100
+const numCountMax = 20
 
-func genKM()int,int{
+func genKM() (int, int) {
 
-	kNum := randomInt(maxNum-1)
-	
-	var mNum int
-	
-	for{
-		mNum = randomInt(maxNum)
-		if nMum > kNum {
-			return k,m
+	// k >1 && k < 98
+	k := number_utils.randomInt(maxTimes-2) + 1
+
+	var m int
+
+	for {
+		m = randomInt(maxTimes)
+		if m > k {
+			return k, m
 		}
 	}
 }
 
+func genArray() []int {
+	k, m := genKM()
+	kNum := randomInt(maxTimes)
 
-func randomInt(max int) int {
-        a, _ := rand.Int(rand.Reader, big.NewInt(int64(max)))
-        return int(a.Int64())
 }
 
 func main() {
