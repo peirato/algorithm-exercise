@@ -1,9 +1,8 @@
 package main
 
 import (
-	"crypto/rand"
 	"fmt"
-	"math/big"
+	"utils"
 )
 
 // 一个数组，一种数出现了k次，其他都出现了m次，m>1，m>k,找到k
@@ -53,24 +52,70 @@ const numCountMax = 20
 func genKM() (int, int) {
 
 	// k >1 && k < 98
-	k := number_utils.randomInt(maxTimes-2) + 1
+	k := utils.RandomInt(maxTimes-2) + 1
 
 	var m int
 
 	for {
-		m = randomInt(maxTimes)
+		m = utils.RandomInt(maxTimes)
 		if m > k {
 			return k, m
 		}
 	}
 }
 
-func genArray() []int {
+func genArray(k int, m int) []int {
+
+	// 一共有多少个数
+	numCount := utils.RandomIntBetween(2, 20)
+
+	// 生成这些数
+	numMap := make(map[int]int)
+	for i := 0; i < numCount; i++ {
+		for {
+			num := utils.RandomInt(maxNum)
+			// 是否存在
+			_, ok := numMap[num]
+			if !ok {
+				numMap[num] = 1
+				break
+			}
+		}
+	}
+
+	var li []int
+
+	for key := range numMap {
+
+		var times int
+		if li == nil {
+			times = k
+		} else {
+			times = m
+		}
+
+		// 依次向数组里添加数
+		for i := 0; i < times; i++ {
+			li = append(li, key)
+		}
+	}
+
+	utils.Shuffle(li)
+
+	return li
+
+}
+
+func compare() {
 	k, m := genKM()
-	kNum := randomInt(maxTimes)
+	l := genArray(k, m)
 
 }
 
 func main() {
 	onlyKTimes([]int{3, 1, 1, 4, 4}, 1, 2)
+	//l := genArray()
+	//utils.Shuffle(l)
+	//fmt.Println(l)
+
 }
