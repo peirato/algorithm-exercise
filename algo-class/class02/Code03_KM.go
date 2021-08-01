@@ -32,6 +32,7 @@ func onlyKTimes(arr []int, k int, m int) int {
 	x := 0
 
 	for i := range arr {
+
 		if t[i]%m != 0 {
 			// % m 后不为零 表示这一位为1
 			x |= 1 << i
@@ -39,10 +40,6 @@ func onlyKTimes(arr []int, k int, m int) int {
 	}
 
 	return x
-}
-
-func comparators() int {
-	return 0
 }
 
 const maxNum = 100
@@ -106,16 +103,42 @@ func genArray(k int, m int) []int {
 
 }
 
+func comparators(l []int) int {
+	numMap := make(map[int]int)
+	for i := range l {
+		num := l[i]
+		_, ok := numMap[num]
+		if ok {
+			numMap[num] = numMap[num] + 1
+		} else {
+			numMap[num] = 1
+		}
+	}
+
+	minTime := 0
+	for key := range numMap {
+		value := numMap[key]
+		if minTime > value {
+			minTime = value
+		}
+	}
+	return minTime
+}
+
 func compare() {
 	k, m := genKM()
 	l := genArray(k, m)
+	fmt.Println(l)
+	result := onlyKTimes(l, k, m)
+	fmt.Println(result)
+	result2 := comparators(l)
+	fmt.Println(result2)
 
 }
 
 func main() {
-	onlyKTimes([]int{3, 1, 1, 4, 4}, 1, 2)
-	//l := genArray()
-	//utils.Shuffle(l)
-	//fmt.Println(l)
+	for i := 0; i < 10; i++ {
+		compare()
+	}
 
 }
