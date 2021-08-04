@@ -27,3 +27,31 @@
 - Code01: 不使用第三个变量交换两个数
 - Code02: 异或相关题目
 - Code03: 一个数组，一种数出现了k次，其他都出现了m次，m>1，m>k,找到k
+
+
+## go文件运行方式
+因为没有用标准的go目录结构，所以如果用vscode就没法正常的使用test运行文件。
+goland是可以单独运行文件的。
+
+### goland运行的方式
+每个要运行的文件的 pakckge 都是 main。
+工具类放入src/utils目录。
+
+1. 配置gopath到根目录
+```
+go env -w GOPATH=/Users/a/Workspace/my-project/algorithm-exercise
+```
+如果之前已经配的有了加：分割
+```
+go env -w GOPATH=/Users/a/go:/Users/a/Workspace/my-project/algorithm-exercise
+```
+
+2. cd到运行的文件的目录。执行命令 go run target.go
+
+目前这么改在vscode是可以运行的，
+把文件改成用test也能运行。
+goland里面还没有试，如果可以，就改成test。
+
+
+
+
