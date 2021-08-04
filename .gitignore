@@ -23,3 +23,7 @@
 hs_err_pid*
 
 **\.idea
+
+.vscode/
+settings.json
+workspace.code-workspace
