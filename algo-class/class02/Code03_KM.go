@@ -46,7 +46,9 @@ func onlyKTimes(arr []int, k int, m int) int {
 
 const maxNum = 10
 const maxTimes = 10
-// const numCountMax = 20
+
+// 数组中有多少种数
+const numCountMax = 20
 
 func genKM() (int, int) {
 
@@ -66,13 +68,13 @@ func genKM() (int, int) {
 func genArray(k int, m int) []int {
 
 	// 一共有多少个数
-	numCount := utils.RandomIntBetween(2, 20)
+	numCount := utils.RandomIntBetween(2, numCountMax)
 
 	// 生成这些数
 	numMap := make(map[int]int)
 	for i := 0; i < numCount; i++ {
-		for {
-			num := utils.RandomInt(maxNum)
+		for len(numMap) < (maxNum - 1) {
+			num := utils.RandomIntBetween(1, maxNum)
 			// 是否存在
 			_, ok := numMap[num]
 			if !ok {
@@ -117,14 +119,16 @@ func comparators(l []int) int {
 		}
 	}
 
-	minTime := 0
+	minTime := 100000000
+	k := 0
 	for key := range numMap {
 		value := numMap[key]
 		if minTime > value {
 			minTime = value
+			k = key
 		}
 	}
-	return minTime
+	return k
 }
 
 func Code03Compare() {
