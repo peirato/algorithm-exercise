@@ -1,4 +1,4 @@
-package main
+package class02
 
 import (
 	"fmt"
@@ -125,7 +125,7 @@ func comparators(l []int) int {
 	return minTime
 }
 
-func compare() {
+func Code03Compare() {
 	k, m := genKM()
 	l := genArray(k, m)
 	fmt.Println(l)
@@ -136,9 +136,3 @@ func compare() {
 
 }
 
-func main() {
-	for i := 0; i < 10; i++ {
-		compare()
-	}
-
-}

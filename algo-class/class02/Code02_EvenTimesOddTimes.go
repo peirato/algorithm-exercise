@@ -1,4 +1,4 @@
-package main
+package class02
 
 // 数组中 只有一种数 出现奇数次
 func findOddTimesNum1(arr []int)int {
@@ -40,7 +40,7 @@ func findRight1(i int)int{
 }
 
 
-func main() {
+func Code02() {
 	// 11  10
 	findRight1(4)
 	println(findOddTimesNum1([]int{3,1,1,4,4}))
