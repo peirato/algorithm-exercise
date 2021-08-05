@@ -9,13 +9,15 @@ import (
 
 func onlyKTimes(arr []int, k int, m int) int {
 
-	var t [32]int
+	// 用一个数组，数组的长度和int的位数是相同的
+	var t [16]int
 
 	// 初始化数组
 	for i := range t {
 		t[i] = 0
 	}
 
+	// 把数组中的数转换成二进制，按位累加在 t 数组上
 	for i := range arr {
 		for j := range t {
 			// 判断 数组中的数 下标为j的位是不是1
@@ -23,15 +25,15 @@ func onlyKTimes(arr []int, k int, m int) int {
 			if arr[i]>>(j)&1 == 1 {
 				t[j]++
 			}
-			if arr[1] == 0 {
-				break
-			}
+			// if arr[1] == 0 {
+			// 	break
+			// }
 		}
 	}
 
 	x := 0
 
-	for i := range arr {
+	for i := range t {
 
 		if t[i]%m != 0 {
 			// % m 后不为零 表示这一位为1
@@ -42,9 +44,9 @@ func onlyKTimes(arr []int, k int, m int) int {
 	return x
 }
 
-const maxNum = 100
-const maxTimes = 100
-const numCountMax = 20
+const maxNum = 10
+const maxTimes = 10
+// const numCountMax = 20
 
 func genKM() (int, int) {
 
@@ -135,4 +137,3 @@ func Code03Compare() {
 	fmt.Println(result2)
 
 }
-
